@@ -4,8 +4,8 @@ import numpy as np
 from joblib import load
 
 app = FastAPI()
-model = load('svr_model.joblib')
-scaler = load('scaler.joblib')
+model = load('models/svr_model.joblib')
+scaler = load('models/scaler.joblib')
 
 
 class PredictionRequest(BaseModel):

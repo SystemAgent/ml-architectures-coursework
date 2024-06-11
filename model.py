@@ -5,7 +5,8 @@ from sklearn.preprocessing import StandardScaler
 from joblib import dump
 
 # Load the dataset
-data = pd.read_csv('household_power_consumption.txt', sep=';', parse_dates={'datetime': [0, 1]}, infer_datetime_format=True, na_values='?', low_memory=False, index_col='datetime')
+data = pd.read_csv('household_power_consumption.txt', sep=';', parse_dates={'datetime': [0, 1]},
+                   infer_datetime_format=True, na_values='?', low_memory=False, index_col='datetime')
 
 # Fill missing values with median and reduce dataset for example purposes
 data = data.fillna(data.median()).resample('D').mean()
@@ -34,5 +35,5 @@ model = SVR(kernel='rbf')
 model.fit(X_train_scaled, y_train)
 
 # Save model and scaler
-dump(model, 'svr_model.joblib')
-dump(scaler, 'scaler.joblib')
+dump(model, 'models/svr_model.joblib')
+dump(scaler, 'models/scaler.joblib')
